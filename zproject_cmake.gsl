@@ -296,6 +296,11 @@ ENDIF (ENABLE_DRAFTS)
 .endif
 source_group("Source Files" FILES ${$(project.linkname)_sources})
 
+IF (MSVC)
+    enable_language(RC)
+    list (APPEND $(project.linkname)_sources builds/msvc/resource.rc)
+    source_group("Reource Files" FILES builds/msvc/resource.rc)
+ENDIF (MSVC)
 
 option($(PROJECT.PREFIX)_BUILD_SHARED "Whether or not to build the shared object" ON)
 option($(PROJECT.PREFIX)_BUILD_STATIC "Whether or not to build the static archive" ON)
